@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나만의 항해 블로그</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-header">
+
+    </div>
+    <div class="background-body">
+
+    </div>
+    <div class="wrap">
+        <div class="header">
+            <h2>항해 블로그</h2>
+            <p>
+                공유하고 싶은 소식을 입력해주세요.
+                24시간이 지난 뒤에는 사라집니다.
+            </p>
+        </div>
+        <div class="area-write">
+            <textarea class="field" placeholder="공유하고 싶은 소식을 입력해주세요" name="contents" id="contents" cols="30"
+                      rows="10"></textarea>
+            <!--            <button class="btn btn-danger" onclick="writePost()">작성하기</button>-->
+            <img src="images/send.png" alt="" onclick="writePost()">
+        </div>
+        <div id="cards-box" class="area-read">
+            <div class="card">
+                <!-- date/username 영역 -->
+                <div class="metadata">
+                    <div class="date">
+                        October 10, 2020
+                    </div>
+                    <div class="username">
+                        anonymous
+                    </div>
+                </div>
+                <!-- contents 조회/수정 영역-->
+                <div class="contents">
+                    <div id="1-contents" class="text">
+                        dsafnkalfklewakflekelafkleajfkleafkldsankflenwaklfnekwlafneklwanfkelawnfkelanfkleanfklew
+                    </div>
+                    <div id="1-editarea" class="edit">
+                        <textarea id="1-textarea" class="te-edit" name="" id="" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+                <!-- 버튼 영역-->
+                <div class="footer">
+                    <img id="1-edit" class="icon-start-edit" src="images/edit.png" alt="" onclick="editPost('1')">
+                    <img id="1-delete" class="icon-delete" src="images/delete.png" alt="" onclick="deleteOne('1')">
+                    <img id="1-submit" class="icon-end-edit" src="images/done.png" alt="" onclick="submitEdit('1')">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
