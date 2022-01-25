@@ -3,65 +3,99 @@ $(document).ready(function () {
         })
 
         function getMessages() {
-            $('#cards-box').empty();
+//            $('#cards-box').empty();
             $.ajax({
                 type: "GET",
                 url: "/api/memos",
                 data: {},
                 success: function (response) {
                     for (let i = 0; i < response.length; i++) {
-                        let message = response[i];
-                        let id = message['id'];
-                        let username = message['username'];
-                        let contents = message['contents'];
-                        let modifiedAt = message['modifiedAt'];
-                        addHTML(id, username, contents, modifiedAt);
+                        let post = response[i];
+                        let id = post['id'];
+                        let postName = post['postName'];
+                        let userName = post['userName'];
+                        let postText = post['postText'];
+                        let createdAt = post['createdAt'];
+                        addHTML(id, postName, userName, postText,createdAt);
                     }
                 }
             });
         }
 
-        function addHTML(id, username, contents, modifiedAt) {
-            let tempHtml = makeMessage(id, username, contents, modifiedAt);
-            $('#cards-box').append(tempHtml);
+        function addHTML(id, postName, userName, postText, createdAt)
+        {
+            let tempHtml = makeMessage(id, postName, userName, postText, createdAt);
+//            $('#cards-box').append(tempHtml);
+
+            $('#tablebody').append(tempHtml);
         }
 
-        function makeMessage(id, username, contents, modifiedAt, i) {
-            return `<div class="card">
-                        <!-- date/username 영역 -->
-                        <div class="metadata">
-                            <div class="date">
-                                ${modifiedAt}
-                            </div>
-                            <div id="${id}-username" class="username">
-                                ${username}
-                            </div>
-                        </div>
-                        <!-- contents 조회/수정 영역-->
-                        <div class="contents">
-                            <div id="${id}-contents" class="text">
-                                ${contents}
-                            </div>
-                            <div id="${id}-editarea" class="edit">
-                                <textarea id="${id}-textarea" class="te-edit" name="" id="" cols="30" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <!-- 버튼 영역-->
-                        <div class="footer">
-                            <img id="${id}-edit" class="icon-start-edit" src="images/edit.png" alt="" onclick="editPost('${id}')">
-                            <img id="${id}-delete" class="icon-delete" src="images/delete.png" alt="" onclick="deleteOne('${id}')">
-                            <img id="${id}-submit" class="icon-end-edit" src="images/done.png" alt="" onclick="submitEdit('${id}')">
-                        </div>
-                    </div>`;
+        function makeMessage(id, postName, userName, postText,createdAt, i) {
+            return `<tr class="tableColor">
+                                        <td scope="row" class="tbPostNum"> ${id} </td>
+                                        <td scope="row" class="tbPostName" onclick="readPost(${id})"> ${postName} </td>
+                                        <td scope="row" class="tbUserName"> ${userName} </td>
+                                        <td scope="row" class="tbWriteDay"> ${createdAt} </td>
+                                    </tr>`
+
+
+//            `<div class="card">
+//                        <!-- date/username 영역 -->
+//                        <div>
+//                            <tr class="date">
+//                                작성 날짜 : ${createdAt}
+//                            </tr>
+//
+//                            <tr class="user">
+//                                작성자 : ${userName}
+//                            </tr>
+//
+//                            <tr class="postname">
+//                                ${postName}
+//                            </tr>
+//                        </div>
+//                        <!-- 버튼 영역-->
+//                        <div class="footer">
+//                            <img id="${id}-edit" class="icon-start-edit" src="images/edit.png" alt="" onclick="editPost('${id}')">
+//                            <img id="${id}-delete" class="icon-delete" src="images/delete.png" alt="" onclick="deleteOne('${id}')">
+//                            <img id="${id}-submit" class="icon-end-edit" src="images/done.png" alt="" onclick="submitEdit('${id}')">
+//                        </div>
+//                    </div>`;
         }
+        function isValidPostName(postName) {
+                    if (postName == '') {
+                        alert('글 제목을 입력해주세요');
+                        return false;
+                    }
+                    if (postName.trim().length > 30) {
+                        alert('글 제목을 공백 포함 30자 이하로 입력해주세요');
+                        return false;
+                    }
+                    return true;
+                }
+
+        function isValidUserName(userName) {
+                            if (userName == '') {
+                                alert('유저 이름을 입력해주세요');
+                                return false;
+                            }
+                            if (userName.trim().length > 10) {
+                                alert('유저 이름을 공백 포함 10자 이하로 입력해주세요');
+                                return false;
+                            }
+                            return true;
+                        }
+
+
 
         function isValidContents(contents) {
             if (contents == '') {
                 alert('내용을 입력해주세요');
                 return false;
             }
-            if (contents.trim().length > 140) {
-                alert('공백 포함 140자 이하로 입력해주세요');
+            if (contents.trim().length > 140)
+            {
+                alert('내용을 공백 포함 140자 이하로 입력해주세요');
                 return false;
             }
             return true;
@@ -80,14 +114,25 @@ $(document).ready(function () {
         }
 
         function writePost() {
-            let contents = $('#contents').val();
+            let postName = $('#postName').val();
+            let userName = $('#userName').val();
+            let postText = $('#contents').val();
 
-            if (isValidContents(contents) == false) {
+
+            if (isValidPostName(postName) == false)
+            {
+                return;
+            }
+            else if (isValidUserName(userName) == false)
+            {
+                 return;
+            }
+            else if (isValidContents(postText) == false)
+            {
                 return;
             }
 
-            let username = genRandomName(10);
-            let data = {'username': username, 'contents': contents};
+            let data = {'postName' : postName, 'userName': userName, 'postText': postText};
 
             $.ajax({
                 type: "POST",
@@ -154,4 +199,43 @@ $(document).ready(function () {
                     window.location.reload();
                 }
             })
+        }
+
+        function WriteBtn()
+        {
+//            $('#mainpage').addClass('hide');
+            $('#writepage').addClass('show');
+        }
+
+        function cancle()
+        {
+//            $('#mainpage').removeClass('hide');
+            $('#writepage').removeClass('show');
+        }
+
+        function readPost(index)
+        {
+            $.ajax({
+                 type: "GET",
+                 url: "/api/memos",
+                 data: {},
+                 success: function (response)
+                    {
+                        let aa = index - 1;
+
+                        let post = response[aa];
+                        let id = post['id'];
+                        let postName = post['postName'];
+                        let userName = post['userName'];
+                        let postText = post['postText'];
+                        let createdAt = post['createdAt'];
+
+                        alert(id);
+                        alert(postName);
+                        alert(userName);
+                        alert(postText);
+                        alert(createdAt);
+
+                    }
+                 });
         }

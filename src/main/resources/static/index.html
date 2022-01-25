@@ -13,54 +13,128 @@
 
 <body>
     <div class="background-header">
-
     </div>
     <div class="background-body">
+    </div>
+
+<!-- 전체 게시글 목록 조회 페이지-->
+    <div id = "mainpage">
+        <div class="header">
+            <h2>Spring 입문 주차 개인 과제</h2>
+
+            <button class="WriteBtn" onclick="WriteBtn()">
+                글 쓰기
+            </button>
+            <div class="headerText">
+                스프링부트로 나만의 항해 블로그 만들기
+            </div>
+
+
+        </div>
+        <div >
+
+
+            <table class="table">
+                <thead>
+                    <tr class="tableHead">
+                        <th scope="col" class="thPostNum"> 글 번호 </th>
+                        <th scope="col" class="thPostName"> 제목 </th>
+                        <th scope="col" class="thUserName"> 작성자 </th>
+                        <th scope="col" class="thWriteDay"> 작성일 </th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablebody">
+<!--                        <tr class="tableset">-->
+<!--                            <td scope="row" class="user"> 글 번호1 </td>-->
+<!--                            <td scope="row" class="user"> 제목1 </td>-->
+<!--                            <td scope="row" class="user"> 작성자1 </td>-->
+<!--                            <td scope="row" class="user"> 작성일1 </td>-->
+<!--                        </tr>-->
+                </tbody>
+            </table>
+
+        </div>
 
     </div>
-    <div class="wrap">
-        <div class="header">
-            <h2>항해 블로그</h2>
-            <p>
-                공유하고 싶은 소식을 입력해주세요.
-                24시간이 지난 뒤에는 사라집니다.
-            </p>
-        </div>
-        <div class="area-write">
-            <textarea class="field" placeholder="공유하고 싶은 소식을 입력해주세요" name="contents" id="contents" cols="30"
+
+
+
+    <div>
+        <div id="writepage" class="popup ">
+            <div class=" writepage">
+                <h1 class = "WriteText">글 작성하기</h1>
+
+                <div class="area-write">
+
+            <textarea class="postfield" placeholder="게시글 제목을 적어주세요" name="contents" id="postName" cols="30"
                       rows="10"></textarea>
-            <!--            <button class="btn btn-danger" onclick="writePost()">작성하기</button>-->
-            <img src="images/send.png" alt="" onclick="writePost()">
-        </div>
-        <div id="cards-box" class="area-read">
-            <div class="card">
-                <!-- date/username 영역 -->
-                <div class="metadata">
-                    <div class="date">
-                        October 10, 2020
-                    </div>
-                    <div class="username">
-                        anonymous
-                    </div>
+                    <textarea class="userfield" placeholder="작성자 이름을 적어주세요" name="contents" id="userName" cols="30"
+                              rows="10"></textarea>
+                    <textarea class="field" placeholder="공유하고 싶은 소식을 입력해주세요" name="contents" id="contents" cols="30"
+                              rows="10"></textarea>
+                    <!--            <button class="btn btn-danger" onclick="writePost()">작성하기</button>-->
+
                 </div>
-                <!-- contents 조회/수정 영역-->
-                <div class="contents">
-                    <div id="1-contents" class="text">
-                        dsafnkalfklewakflekelafkleajfkleafkldsankflenwaklfnekwlafneklwanfkelawnfkelanfkleanfklew
-                    </div>
-                    <div id="1-editarea" class="edit">
-                        <textarea id="1-textarea" class="te-edit" name="" id="" cols="30" rows="5"></textarea>
-                    </div>
+
+                <div>
+                    <button  id="close" class="close, writeBack" onclick="cancle()">
+                        글쓰기 취소
+                    </button>
+
+                    <img src="images/send.png" alt="" onclick="writePost()" class = "writePost">
+
+
                 </div>
-                <!-- 버튼 영역-->
-                <div class="footer">
-                    <img id="1-edit" class="icon-start-edit" src="images/edit.png" alt="" onclick="editPost('1')">
-                    <img id="1-delete" class="icon-delete" src="images/delete.png" alt="" onclick="deleteOne('1')">
-                    <img id="1-submit" class="icon-end-edit" src="images/done.png" alt="" onclick="submitEdit('1')">
-                </div>
+
             </div>
         </div>
     </div>
+
+
+
+<!--    <div class="wrap">-->
+
+<!--        <div class="area-write">-->
+<!--        -->
+<!--            <textarea class="postfield" placeholder="게시글 제목을 적어주세요" name="contents" id="postName" cols="30"-->
+<!--                      rows="10"></textarea>-->
+<!--            <textarea class="userfield" placeholder="작성자 이름을 적어주세요" name="contents" id="userName" cols="30"-->
+<!--                      rows="10"></textarea>  -->
+<!--            <textarea class="field" placeholder="공유하고 싶은 소식을 입력해주세요" name="contents" id="contents" cols="30"-->
+<!--                      rows="10"></textarea>-->
+<!--            &lt;!&ndash;            <button class="btn btn-danger" onclick="writePost()">작성하기</button>&ndash;&gt;-->
+<!--            <img src="images/send.png" alt="" onclick="writePost()">-->
+<!--        </div>-->
+<!--        <div id="cards-box" class="area-read">-->
+<!--            <div class="card">-->
+<!--                &lt;!&ndash; date/username 영역 &ndash;&gt;-->
+<!--                <div class="metadata">-->
+<!--                    <div class="date">-->
+<!--                        October 10, 2020-->
+<!--                    </div>-->
+<!--                    <div class="username">-->
+<!--                        anonymous-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; contents 조회/수정 영역&ndash;&gt;-->
+<!--                <div class="contents">-->
+<!--                    <div id="1-contents" class="text">-->
+<!--                        dsafnkalfklewakflekelafkleajfkleafkldsankflenwaklfnekwlafneklwanfkelawnfkelanfkleanfklew-->
+<!--                    </div>-->
+<!--                    <div id="1-editarea" class="edit">-->
+<!--                        <textarea id="1-textarea" class="te-edit" name="" id="" cols="30" rows="5"></textarea>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; 버튼 영역&ndash;&gt;-->
+<!--                <div class="footer">-->
+<!--                    <img id="1-edit" class="icon-start-edit" src="images/edit.png" alt="" onclick="editPost('1')">-->
+<!--                    <img id="1-delete" class="icon-delete" src="images/delete.png" alt="" onclick="deleteOne('1')">-->
+<!--                    <img id="1-submit" class="icon-end-edit" src="images/done.png" alt="" onclick="submitEdit('1')">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </body>
 
 </html>
