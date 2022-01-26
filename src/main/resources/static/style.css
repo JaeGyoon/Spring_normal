@@ -1,0 +1,213 @@
+.background-header
+{
+    position: fixed;
+    z-index: -1;
+    top: 0px;
+    width: 100%;
+    height: 200px;
+    background-color: #339af0;
+}
+
+.background-body
+{
+    position: fixed;
+    z-index: -1;
+    top: 200px;
+    height: 100%;
+    width: 100%;
+    background-color: #dee2e6;
+}
+
+.header
+{
+    width: 100%;
+    margin: 60px auto;
+}
+
+.header h2
+{
+    /*font-family: 'Noto Sans KR', sans-serif;*/
+    height: 33px;
+    font-size: 42px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.79;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.headerText
+{
+    text-align: center;
+    color: #ffffff;
+    padding-bottom: 40px;
+}
+
+.table
+{
+    margin : 0 auto 0 auto;
+}
+
+
+
+.thPostNum
+{
+
+    text-align: center;
+    width: 150px;
+    font-size: 15px;
+}
+
+
+
+.thPostName
+{
+    text-align: center;
+    font-size: 15px;
+    width: 400px;
+}
+
+.thUserName
+{
+    text-align: center;
+    width: 150px;
+    font-size: 15px;
+}
+
+
+.thWriteDay
+{
+    text-align: center;
+    width: 150px;
+    font-size: 15px;
+}
+
+
+.tbPostNum
+{
+    text-align: center;
+    width: 150px;
+    font-size: 12px;
+}
+
+.tbPostName
+{
+    text-align: left;
+    font-size: 12px;
+    width: 400px;
+}
+
+.tbUserName
+{
+    text-align: center;
+    width: 150px;
+    font-size: 12px;
+}
+
+.tbWriteDay
+{
+    text-align: center;
+    width: 150px;
+    font-size: 12px;
+}
+
+.WriteBtn
+{
+    display: block;
+    margin-left: auto;
+    margin-right: 40px;
+
+    width: 150px;
+    height: 40px;
+}
+
+.hide
+{
+    display: none;
+}
+
+.show
+{
+    display: flex;
+}
+
+.popup.show
+{
+    display: flex;
+}
+
+.popup
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.writepage
+{
+    width: 60%;
+    height: 60%;
+    background-color: #ffffff;
+}
+
+.WriteText
+{
+    text-align : center;
+}
+
+.postfield
+{
+    width : 50%;
+    height: 20px;
+    display : block;
+    margin : auto;
+}
+
+.userfield
+{
+    width : 50%;
+    height: 20px;
+    display : block;
+    margin : auto;
+}
+
+.field
+{
+    width : 50%;
+    height: 320px;
+    display : block;
+    margin : auto;
+}
+
+.writeBack
+{
+
+    margin-left : 300px;
+    width  : 100px;
+    height : 30px;
+
+}
+
+.writePost
+{
+
+    margin-left : 250px;
+    width  : 30px;
+    height : 30px;
+
+}
+
+.readpage
+{
+    width: 60%;
+    height: 60%;
+    background-color: #ffffff;
+}
