@@ -207,35 +207,52 @@ $(document).ready(function () {
             $('#writepage').addClass('show');
         }
 
+        function ReadBtn()
+                {
+        //            $('#mainpage').addClass('hide');
+                    $('#readpage').addClass('show');
+                }
+
+
         function cancle()
         {
 //            $('#mainpage').removeClass('hide');
             $('#writepage').removeClass('show');
+            $('#readpage').removeClass('show');
         }
 
-        function readPost(index)
-        {
-            $.ajax({
-                 type: "GET",
-                 url: "/api/memos",
-                 data: {},
-                 success: function (response)
-                    {
-                        let aa = index - 1;
+                function readPost(index)
+                {
+                    $.ajax({
+                         type: "GET",
+                         url: "/api/memos",
+                         data: {},
+                         success: function (response)
+                            {
+                                let aa = response.length - index;
 
-                        let post = response[aa];
-                        let id = post['id'];
-                        let postName = post['postName'];
-                        let userName = post['userName'];
-                        let postText = post['postText'];
-                        let createdAt = post['createdAt'];
+//                                   index - 1;
 
-                        alert(id);
-                        alert(postName);
-                        alert(userName);
-                        alert(postText);
-                        alert(createdAt);
+                                let post = response[aa];
+                                let id = post['id'];
+                                let postName = post['postName'];
+                                let userName = post['userName'];
+                                let postText = post['postText'];
+                                let createdAt = post['createdAt'];
 
-                    }
-                 });
-        }
+                               $('#readPostName').val(postName);
+                               $('#readUserName').val(userName);
+                               $('#readPostText').val(postText);
+                               $('#readDay').val(createdAt);
+
+
+
+
+
+                                ReadBtn();
+
+
+
+                            }
+                         });
+                }

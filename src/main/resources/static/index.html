@@ -59,11 +59,11 @@
     </div>
 
 
-
+<!--글 쓰기 페이지-->
     <div>
         <div id="writepage" class="popup ">
             <div class=" writepage">
-                <h1 class = "WriteText">글 작성하기</h1>
+                <h1 class = "WriteText">글 보기</h1>
 
                 <div class="area-write">
 
@@ -82,7 +82,42 @@
                         글쓰기 취소
                     </button>
 
-                    <img src="images/send.png" alt="" onclick="writePost()" class = "writePost">
+                    <img src="../../../../../../../../IdeaProjects/HangHaeBlog/src/main/resources/static/images/send.png" alt="" onclick="writePost()" class = "writePost">
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- 글 조회 페이지 -->
+
+    <div>
+        <div id="readpage" class="popup ">
+            <div class=" readpage">
+                <h1 class = "WriteText">글 조회</h1>
+
+                <div class="area-write">
+
+            <textarea class="postfield" name="contents" id="readPostName" cols="30"
+                      rows="10"></textarea>
+                    <textarea class="userfield"  name="contents" id="readUserName" cols="30"
+                              rows="10"></textarea>
+                    <textarea class="userfield"  name="contents" id="readDay" cols="30"
+                              rows="10"></textarea>
+                    <textarea class="field" name="contents" id="readPostText" cols="30"
+                              rows="10"></textarea>
+                    <!--            <button class="btn btn-danger" onclick="writePost()">작성하기</button>-->
+
+                </div>
+
+                <div>
+                    <button  id="readClose" class="close, writeBack" onclick="cancle()">
+                        돌아가기
+                    </button>
+
+
 
 
                 </div>
